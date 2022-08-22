@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<sub-flow name="postIncidentsSubFlow" doc:id="e67aa858-c183-4348-836a-dfd3a824a04c" >
+		<logger level="INFO" doc:name="Info: PostIncidents flow Logger" doc:id="c386d16f-d79a-4535-a489-8479838899ad" message="postincidents flow started"/>
+		<logger level="DEBUG" doc:name="Debug: Request payload of OSVC System " doc:id="90fa2165-93d5-48b1-918d-df8b3d401cc3" message="payload before OSVC system is #[payload]" category="${com.debug.post.incidents}"/>
+		<http:request method="POST" doc:name="Request To OSVC system" doc:id="771b483d-0370-4ba0-a0f2-9ba7b82907b6" config-ref="HTTP_Request_configuration" path="${OSVC.resourcePath.incidents}"/>
+		<logger level="DEBUG" doc:name="Debug: Response payload of OSVC system " doc:id="3576f41a-fa4d-47a1-bca8-94c58e80cae7" message="payload after OSVC system is #[payload]" category="${com.debug.post.incidents}"/>
+		<logger level="INFO" doc:name="Info: postincidents flow end Logger" doc:id="54d96c6e-0448-4911-8bf7-7747e3fca536" message="postincidents flow ended"/>
+	</sub-flow>
+</mule>

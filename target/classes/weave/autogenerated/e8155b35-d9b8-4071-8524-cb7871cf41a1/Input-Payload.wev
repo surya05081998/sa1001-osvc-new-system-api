@@ -1,0 +1,19 @@
+%dw 2.0
+
+type auto_e8155b35_d9b8_4071_8524_cb7871cf41a1_Input_Payload = {
+  acctStatus: String, 
+  country: String, 
+  sfdcId: Number, 
+  address3?: String, 
+  address2?: String, 
+  city: String, 
+  address1: String, 
+  postalCode: String, 
+  timeZone: String, 
+  name: String, 
+  state: String, 
+  activeContracts: Boolean, 
+  status: String, 
+  _?: Any
+}
+

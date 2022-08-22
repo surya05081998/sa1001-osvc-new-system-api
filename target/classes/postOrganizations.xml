@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<sub-flow name="postOrganizationsSubFlow" doc:id="e8155b35-d9b8-4071-8524-cb7871cf41a1" >
+		<logger level="INFO" doc:name="Info: postorganizations flow start Logger" doc:id="872863f6-7aad-432f-bff7-42742adea84d" message="postorganizations flow started"/>
+		<http:request method="POST" doc:name="Request" doc:id="e7dbd3b9-a9dc-473d-b2fd-b476f003d50e" config-ref="HTTP_Request_configuration" path="${OSVC.resourcePath.organizations}"/>
+		<logger level="INFO" doc:name="Info: postorganizations flow end Logger" doc:id="26b3c52b-2aba-4fea-b0fa-402dca5c62fa" message="postorganizations flow ended"/>
+	</sub-flow>
+</mule>

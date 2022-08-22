@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd  http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+    <http:listener-config name="sa1001-osvc-httpListenerConfig">
+        <http:listener-connection host="${http.listener.host}" port="${http.listener.port}" protocol="${http.listener.protocol}" />
+    </http:listener-config>
+    <apikit:config name="sa1001-osvc-config" api="resource::0cfa0116-cb9a-43a3-8e65-48d817d60af9:sa1001-osvc:1.0.1:raml:zip:sa1001-osvc.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="5968eadc-d3cf-4347-adf3-d3ee727f67e3" basePath="${OSVC.basePath}">
+        <http:request-connection host="${OSVC.host}" port="${OSVC.port}">
+            <http:authentication>
+                <http:basic-authentication username="${OSVC.username}" password="${OSVC.password}" />
+            </http:authentication>
+        </http:request-connection>
+    </http:request-config>
+    <configuration-properties doc:name="Configuration properties" doc:id="f8e68cc9-a678-49c8-8f7b-8a25aa1a318c" file="properties\mule-common.properties" />
+    <configuration-properties doc:name="Configuration properties" doc:id="5ca3001d-70ee-4bb7-8312-af31b14425a9" file="properties\mule-${env}.properties" />
+    <api-gateway:autodiscovery apiId="${api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="b9b615ab-40a0-4f86-bf39-a3988826544f" flowRef="sa1001-osvc-main" />
+</mule>
